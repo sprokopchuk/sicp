@@ -26,6 +26,8 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 (cube-root 27) 
 =======
 (cube-root 27)
@@ -47,3 +49,18 @@
 
 (cube (cube-root 1e+45));;;1.0000000000000001e+45
 >>>>>>> 535e74a... Add some tests. Exercise 1.8
+=======
+(cube-root 27)
+=======
+(check-= (cube-root 27) 3 1e-10) ;;; 
+>>>>>>> 288cab6... Add tests for checks. Exercise 1.8
+
+(check-= (cube-root 1e-28) 0 1e-5);;; 
+
+(check-= (cube-root 1e+25) 215443469.0031881 1e-5);;;
+
+<<<<<<< HEAD
+(cube (cube-root 1e+45));;;1.0000000000000001e+45
+>>>>>>> 942707b... Add some tests. Exercise 1.8
+=======
+>>>>>>> 288cab6... Add tests for checks. Exercise 1.8
