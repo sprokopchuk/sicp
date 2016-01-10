@@ -2,9 +2,6 @@
 
 (require rackunit)
 
-
-(define (dec n) (- n 1))
-
 ;;Рекурсивный процесс
 (define (f-rec n)
   (if (< n 3)
@@ -18,7 +15,6 @@
 
 
 (define (f-count a b c count)
-
   (cond ((= count 0) a) 
         ((= count 1) b)
         ((= count 2) c)
