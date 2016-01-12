@@ -4,10 +4,8 @@
 
 (define (square n) (* n n))
 
-(define (max-num a b) 
-  (cond ((> a b) a)  
-        ((< a b) b)
-        (else a)))
+(define (max-num x y)
+  (if (>= x y) x y))
 
 (define (sum-squares n x)
   (+ (square n) (square x)))
