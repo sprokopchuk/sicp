@@ -23,9 +23,9 @@
   (define (next a)(+ a 1))
   (product1 + 1 next n))
 
-;(check-equal? (factorial 5) 120)
-;(check-equal? (factorial 6) 720)
-;(check-equal? (factorial 3) 6)
+(check-equal? (factorial 5) 120)
+(check-equal? (factorial 6) 720)
+(check-equal? (factorial 3) 6)
 
 ; Вычисление числа Пи через формулу Джона Уоллиса.
 
@@ -35,5 +35,6 @@
 (define (pi-product a b)
   (define (next a)(+ a 1))
   (product2 f a next b))
+
 
 (* 4 (pi-product 2.0 1000))
