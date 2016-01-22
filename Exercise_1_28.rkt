@@ -14,8 +14,10 @@
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp)
-         (if (= (remainder (square (expmod base (/ exp 2) m))
-                    m) 1) 0 m))
+         (define x (expmod base (/ exp 2) m))
+         (if (and (not (= x 1)) (not (= x (- m 1))) (= (remainder (square x) m) 1))
+                 0
+                 (remainder (square x) m)))
         (else
          (remainder (* base (expmod base (- exp 1) m))
                     m))))
@@ -25,7 +27,7 @@
 (define (miller-rabin-test n)
   (define (try-it a)
     (= (expmod a (- n 1) n) 1))
-  (try-it (+ 1 (random (- n 2)))))
+  (try-it (+ 1 (random-natural (- n 1)))))
 
 
   
@@ -34,5 +36,7 @@
 (check-equal? (miller-rabin-test 571) true)  ;простое число
 (check-equal? (miller-rabin-test 561) false)  ;число Кармайкла
 (check-equal? (miller-rabin-test 1105) false)  ;число Кармайкла
-(check-equal? (miller-rabin-test 3) true)  
+(check-equal? (miller-rabin-test 1729) false)  ;число Кармайкла
+(check-equal? (miller-rabin-test 2465) false)  ;число Кармайкла
+(check-equal? (miller-rabin-test 7) true)  
 (check-equal? (miller-rabin-test 4) false)  
