@@ -1,5 +1,8 @@
 #lang racket
 
+
+(require rackunit)
+
 ; Рекурсвиный процесс
 (define (cont-frac1 n d k)
   (if (> k 0)
@@ -16,6 +19,5 @@
   (cont-frac-iter n d k 1))
 
 
-(cont-frac2 (lambda (i) 1.0) (lambda (i) 1.0) 10)
-(cont-frac1 (lambda (i) 1.0) (lambda (i) 1.0) 10) ; 0.6180555555555556 
-(/ 1 1.618) ; 0.6180469715698392
+(check-= (cont-frac1 (lambda (i) 1.0) (lambda (i) 1.0) 10) (/ 1 1.618) 1e-4) ; 0.6180555555555556
+(check-= (cont-frac2 (lambda (i) 1.0) (lambda (i) 1.0) 10) (/ 1 1.618) 1e-4) ; 0.6180555555555556 
