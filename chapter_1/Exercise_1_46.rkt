@@ -2,7 +2,8 @@
 
 (require rackunit)
 
-(define (average a b)(/ (+ a b) 2))
+(define (average a b)
+  (/ (+ a b) 2))
 (define (square x)(* x x))
 
 (define (compose f g)
@@ -15,6 +16,7 @@
 
 (define (average-damp f)
   (lambda (x) (average x (f x))))
+
 
 ; Напишите процедуру iterative- improve, которая принимает в качестве аргументов две процедуры:
 ; проверку, достаточно ли хоро- шо значение, и метод улучшения значения. Iterative-improve должна
@@ -48,16 +50,9 @@
 
 (root 590049 10) ; 3^10 = 590049
 
-(define (improve x)
-  (average-damp (lambda (y) (/ x y))))
-
-
-(define (good-enough? guess x)
-  (< (abs (- guess (improve x))) 1e-10))
-
 ; Процедура переписана с помощью iterative-improve
 (define (sqrt x)
-  ((iterative-improve good-enough? improve) 1.0))
+ ((iterative-improve close-enough? (average-damp (lambda (y) (/ x y)))) 1.0))
 
+ (sqrt 9); 3^2 = 9
 
-(sqrt 9.0)
